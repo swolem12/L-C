@@ -1,0 +1,20 @@
+THEME:
+  STYLE: RusticModern
+  MOOD: WarmExecutiveCoffeehouse
+
+COLORS:
+  PRIMARY: EspressoBrown
+  SECONDARY: Walnut
+  ACCENT: Copper
+  TEXT: WarmCream
+
+TYPOGRAPHY:
+  HEADER: PlayfairDisplay
+  BODY: Inter
+
+UX:
+  - CalmMotion
+  - OrganicSpacing
+  - PremiumCards
+  - GlassEffectsLight
+  - WarmShadows

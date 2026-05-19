@@ -1,0 +1,10 @@
+SECURITY:
+
+SYSTEMS:
+  - RBAC
+  - FirebaseRules
+  - AppCheck
+  - HTTPSOnly
+  - EncryptedStorage
+  - RateLimiting
+  - ValidationPipelines

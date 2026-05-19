@@ -1,0 +1,23 @@
+FRONTEND:
+  FRAMEWORK: NextJS15
+  UI: TailwindCSS
+  COMPONENTS: ShadCN
+  MOTION: FramerMotion
+
+BACKEND:
+  DATABASE: Firestore
+  FUNCTIONS: FirebaseFunctions
+  AUTH: FirebaseAuth
+  STORAGE: FirebaseStorage
+
+AI:
+  SYSTEM: MultiProvider
+  PROVIDERS:
+    - OpenAI
+    - Anthropic
+    - Groq
+    - OpenRouter
+
+DEPLOYMENT:
+  HOSTING: FirebaseHosting
+  CI_CD: GitHubActions

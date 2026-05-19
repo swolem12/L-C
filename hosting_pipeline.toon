@@ -1,0 +1,16 @@
+DEPLOYMENT:
+
+PLATFORM:
+  - FirebaseHosting
+
+PIPELINE:
+  - TypeCheck
+  - Lint
+  - Build
+  - Test
+  - Deploy
+
+ENVIRONMENTS:
+  - Development
+  - Staging
+  - Production

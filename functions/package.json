@@ -1,0 +1,27 @@
+{
+  "name": "leadership-and-coffee-functions",
+  "version": "0.1.0",
+  "private": true,
+  "main": "lib/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint 'src/**/*.ts'",
+    "serve": "npm run build && firebase emulators:start --only functions,firestore",
+    "deploy": "firebase deploy --only functions"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "@google-cloud/kms": "latest",
+    "firebase-admin": "latest",
+    "firebase-functions": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "eslint": "latest",
+    "typescript": "latest"
+  }
+}

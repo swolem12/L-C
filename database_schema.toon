@@ -1,0 +1,18 @@
+COLLECTIONS:
+  - users
+  - coaches
+  - clients
+  - programs
+  - workouts
+  - nutrition_plans
+  - coffee_posts
+  - leadership_posts
+  - analytics
+  - subscriptions
+  - gyms
+  - payroll
+  - messages
+  - notifications
+  - ai_usage_logs
+  - coach_ai_settings
+  - ai_providers

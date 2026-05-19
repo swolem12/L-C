@@ -1,0 +1,21 @@
+AI_PROVIDER_SYSTEM:
+
+SUPPORTED_PROVIDERS:
+  - OPENAI
+  - ANTHROPIC
+  - GROQ
+  - OPENROUTER
+
+SECURITY:
+  ENCRYPTION: AES256
+  STORAGE: FirestoreEncrypted
+  FUNCTIONS_PROXY: true
+
+FEATURES:
+  - WorkoutGeneration
+  - MealPlanGeneration
+  - LeadershipGeneration
+  - CoffeeReflectionGeneration
+  - ClientCheckIns
+  - AnalyticsInsights
+  - RetentionPrediction

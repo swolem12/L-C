@@ -1,0 +1,26 @@
+FIREBASE:
+  AUTH:
+    ENABLED: true
+    PROVIDERS:
+      - GOOGLE
+      - EMAIL
+      - APPLE
+
+  DATABASE:
+    TYPE: Firestore
+    REALTIME: true
+
+  FUNCTIONS:
+    ENABLED: true
+
+  STORAGE:
+    ENABLED: true
+
+  HOSTING:
+    ENABLED: true
+
+  ANALYTICS:
+    ENABLED: true
+
+  APP_CHECK:
+    ENABLED: true

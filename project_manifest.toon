@@ -1,0 +1,9 @@
+PROJECT_NAME: L&C
+FULL_NAME: Leadership & Coffee
+TYPE: EnterpriseCoachingPlatform
+STYLE: RusticModernCoffeehouse
+STACK: NextJS15_Firebase_TypeScript
+DEPLOYMENT: FirebaseHosting
+AI_ARCHITECTURE: DecentralizedCoachAI
+MOBILE_SUPPORT: true
+REALTIME_SYNC: true

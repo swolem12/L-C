@@ -1,0 +1,67 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function organizationId() {
+      return request.auth.token.organizationId;
+    }
+
+    function role() {
+      return request.auth.token.role;
+    }
+
+    function inOrganization(orgId) {
+      return signedIn() && organizationId() == orgId;
+    }
+
+    function isStaff() {
+      return signedIn() && role() in ['owner', 'admin', 'coach'];
+    }
+
+    match /users/{userId} {
+      allow read: if signedIn() && (request.auth.uid == userId || isStaff());
+      allow create, update: if signedIn() && request.auth.uid == userId;
+      allow delete: if false;
+    }
+
+    match /organizations/{organizationId}/clients/{clientId} {
+      allow read, write: if inOrganization(organizationId) && isStaff();
+    }
+
+    match /organizations/{organizationId}/programs/{programId} {
+      allow read, write: if inOrganization(organizationId) && isStaff();
+    }
+
+    match /organizations/{organizationId}/messages/{messageId} {
+      allow read, write: if inOrganization(organizationId);
+    }
+
+    match /coach_ai_settings/{docId} {
+      allow read: if signedIn() && (request.auth.uid == docId || isStaff());
+      allow create, update, delete: if false;
+    }
+
+    match /coffee_posts/{postId} {
+      allow read: if true;
+      allow write: if signedIn();
+    }
+
+    match /leadership_posts/{postId} {
+      allow read: if true;
+      allow write: if signedIn();
+    }
+
+    match /ai_usage_logs/{logId} {
+      allow read: if signedIn() && isStaff();
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

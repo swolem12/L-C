@@ -1,0 +1,14 @@
+MOBILE_APP:
+
+FRAMEWORK:
+  - ReactNative
+  - Expo
+
+FEATURES:
+  - WorkoutTracking
+  - AIChat
+  - CoffeePosting
+  - Messaging
+  - Notifications
+  - HabitTracking
+  - LeadershipJournal

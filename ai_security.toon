@@ -1,0 +1,14 @@
+AI_SECURITY:
+
+RULES:
+  - NeverExposeKeysToFrontend
+  - EncryptAllAPIKeys
+  - FirebaseFunctionsOnly
+  - HTTPSOnly
+  - TokenLogging
+  - UsageLimits
+  - RateLimiting
+  - RoleValidation
+
+ENCRYPTION:
+  PROVIDER: GoogleCloudKMS

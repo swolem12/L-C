@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+dist
+lib
+coverage
+.env
+.env*.local
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+functions/.env
+functions/lib
+functions/node_modules
+*.tsbuildinfo

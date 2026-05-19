@@ -1,0 +1,16 @@
+COACH_AI_DASHBOARD:
+
+FEATURES:
+  - AddAPIKey
+  - ValidateAPIKey
+  - SelectProvider
+  - SelectModel
+  - TokenUsageAnalytics
+  - UsageLimits
+  - EnableDisableFeatures
+
+SUPPORTED_MODELS:
+  - GPT5
+  - Claude
+  - Groq
+  - OpenRouter
