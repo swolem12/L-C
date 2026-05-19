@@ -1,9 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, BrainCircuit, Coffee, KeyRound, Send, ShieldCheck, Sparkles } from "lucide-react";
+import Image from "next/image";
+import {
+  Activity,
+  BrainCircuit,
+  CalendarClock,
+  Coffee,
+  KeyRound,
+  LineChart,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  UsersRound
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { PageHeader } from "@/components/page-header";
+import { StatCard } from "@/components/stat-card";
 import { coachAiSettings, feedItems, metrics, programs } from "@/data/dashboard";
 
 export function Dashboard() {
@@ -13,6 +29,88 @@ export function Dashboard() {
 
   return (
     <div className="space-y-8 px-4 py-6 sm:px-6 lg:px-8">
+      <PageHeader
+        eyebrow="Executive operations"
+        title="A calm command center for leadership, coaching, coffee culture, and enterprise wellness."
+        description="Monitor high-value accounts, approve AI-assisted coaching work, coordinate communities, and keep sponsor-ready programs moving from one polished workspace."
+        badge="Brand partner ready"
+        actions={
+          <>
+            <Button variant="secondary">
+              <CalendarClock size={18} aria-hidden="true" />
+              Schedule cohort
+            </Button>
+            <Button>
+              <Sparkles size={18} aria-hidden="true" />
+              Generate brief
+            </Button>
+          </>
+        }
+      />
+
+      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <Card className="overflow-hidden">
+          <div className="grid min-h-[360px] md:grid-cols-[0.95fr_1.05fr]">
+            <div className="p-6 sm:p-7">
+              <Badge variant="honey">Sponsored program view</Badge>
+              <h3 className="mt-5 font-display text-3xl font-semibold leading-tight text-espresso-950">
+                Coffeehouse leadership programs with operational rigor.
+              </h3>
+              <p className="mt-4 text-sm leading-6 text-espresso-700">
+                L&amp;C pairs executive coaching, fitness adherence, nutrition support, and community rituals in a format enterprise partners can sponsor with confidence.
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <div className="rounded-md bg-espresso-900 p-4 text-cream-50">
+                  <p className="text-2xl font-semibold">18</p>
+                  <p className="mt-1 text-xs text-cream-200">Active cohorts</p>
+                </div>
+                <div className="rounded-md bg-sage-100 p-4 text-sage-950">
+                  <p className="text-2xl font-semibold">4.8</p>
+                  <p className="mt-1 text-xs">Sponsor score</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative min-h-72 border-t border-espresso-200 md:border-l md:border-t-0">
+              <Image
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80"
+                alt="Premium coffeehouse workspace with people gathering over coffee"
+                fill
+                sizes="(min-width: 1280px) 36vw, 100vw"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-espresso-950/55 via-transparent to-transparent" />
+            </div>
+          </div>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Today&apos;s Operating Rhythm</CardTitle>
+            <p className="text-sm text-espresso-700">What needs approval, escalation, or sponsor visibility.</p>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[
+              ["AI check-ins", "42 drafts ready", 88],
+              ["Client risk review", "9 accounts need attention", 64],
+              ["Community publishing", "3 sponsor-safe posts queued", 74],
+              ["Billing health", "97% accounts current", 97]
+            ].map(([label, detail, value]) => (
+              <div key={label} className="rounded-md border border-espresso-200 bg-cream-100/70 p-4">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <div>
+                    <p className="font-semibold">{label}</p>
+                    <p className="text-sm text-espresso-700">{detail}</p>
+                  </div>
+                  <span className="text-sm font-semibold text-copper-700">{value}%</span>
+                </div>
+                <Progress value={Number(value)} />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </section>
+
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {metrics.map((metric, index) => (
           <motion.div
@@ -21,15 +119,12 @@ export function Dashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.04 }}
           >
-            <Card className="min-h-32">
-              <CardHeader>
-                <CardTitle className="text-sm text-espresso-700">{metric.label}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-3xl font-semibold">{metric.value}</p>
-                <p className="mt-2 text-sm text-sage-800">{metric.delta}</p>
-              </CardContent>
-            </Card>
+            <StatCard
+              label={metric.label}
+              value={metric.value}
+              detail={metric.delta}
+              icon={[UsersRound, Activity, BrainCircuit, LineChart][index]}
+            />
           </motion.div>
         ))}
       </section>
@@ -55,6 +150,9 @@ export function Dashboard() {
                 <div>
                   <p className="font-semibold">{program.title}</p>
                   <p className="mt-1 text-sm text-espresso-700">{program.nextMilestone}</p>
+                  <div className="mt-3 max-w-sm">
+                    <Progress value={program.completionRate} />
+                  </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-sm md:min-w-56">
                   <div>
@@ -89,9 +187,7 @@ export function Dashboard() {
                 <span>Monthly token usage</span>
                 <span>{tokenPercent}%</span>
               </div>
-              <div className="h-3 overflow-hidden rounded-full bg-espresso-100">
-                <div className="h-full rounded-full bg-copper-600" style={{ width: `${tokenPercent}%` }} />
-              </div>
+              <Progress value={tokenPercent} className="h-3" />
             </div>
             <div className="grid grid-cols-2 gap-2">
               <Button variant="outline">

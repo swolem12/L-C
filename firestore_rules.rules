@@ -36,6 +36,31 @@ service cloud.firestore {
       allow read, write: if inOrganization(organizationId) && isStaff();
     }
 
+    match /organizations/{organizationId}/workouts/{workoutId} {
+      allow read, write: if inOrganization(organizationId) && isStaff();
+    }
+
+    match /organizations/{organizationId}/nutrition_plans/{planId} {
+      allow read, write: if inOrganization(organizationId) && isStaff();
+    }
+
+    match /organizations/{organizationId}/check_ins/{checkInId} {
+      allow read, write: if inOrganization(organizationId);
+    }
+
+    match /organizations/{organizationId}/gyms/{gymId} {
+      allow read, write: if inOrganization(organizationId) && isStaff();
+    }
+
+    match /organizations/{organizationId}/notification_rules/{ruleId} {
+      allow read, write: if inOrganization(organizationId) && isStaff();
+    }
+
+    match /organizations/{organizationId}/subscriptions/{subscriptionId} {
+      allow read: if inOrganization(organizationId) && isStaff();
+      allow write: if false;
+    }
+
     match /organizations/{organizationId}/messages/{messageId} {
       allow read, write: if inOrganization(organizationId);
     }

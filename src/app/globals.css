@@ -6,8 +6,11 @@
   --color-cream-50: #fbf7ef;
   --color-cream-100: #f7f0e5;
   --color-cream-200: #eadbc8;
+  --color-honey-100: #f3d7a0;
+  --color-honey-500: #c98d36;
   --color-espresso-100: #e8ded5;
   --color-espresso-200: #d3c2b3;
+  --color-espresso-300: #bda796;
   --color-espresso-600: #6d5546;
   --color-espresso-700: #574236;
   --color-espresso-800: #3e2e26;
@@ -18,8 +21,10 @@
   --color-copper-700: #7f4829;
   --color-sage-100: #dde8d6;
   --color-sage-200: #c8d8c1;
+  --color-sage-600: #66805d;
   --color-sage-800: #415f43;
   --color-sage-950: #223124;
+  --color-ink-900: #171819;
 }
 
 * {
@@ -33,7 +38,10 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #fbf7ef;
+  background:
+    linear-gradient(135deg, rgba(247, 240, 229, 0.96), rgba(221, 232, 214, 0.5)),
+    radial-gradient(circle at top left, rgba(201, 141, 54, 0.18), transparent 34rem),
+    #fbf7ef;
   color: #17100d;
   font-family: var(--font-sans);
 }
@@ -47,4 +55,20 @@ h2,
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #c98d36;
+  color: #17100d;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(rgba(43, 32, 27, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43, 32, 27, 0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
